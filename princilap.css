@@ -1,0 +1,541 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+body {
+    font-family: "Oswald", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    background-color: #140038;
+    background-image: url("fondo-pantalla-patron-fondo-abstracto-grunge-negro-foto-gratis.jpg");
+    background-size: contain;
+    background-repeat: no-repeat; 
+    
+}
+
+.navbar {
+    background-color: #140038f6;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #FFD700;
+    padding-bottom: 20px;
+
+}
+
+.navbar .logo {
+    color: #FFD700;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    gap: 4rem; 
+}
+
+
+.navbar ul li a {
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 22px;
+    margin: 0 2rem;
+}
+
+.carousel1 {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* Aumenta el tamaño máximo del carrusel */
+    margin: 2rem auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 1s ease-in-out; /* Transición más rápida para el cambio manual */
+}
+
+.slide {
+    width: 100%;
+    height: auto;
+    max-width: 1200px; /* Ajusta el tamaño de la imagen */
+    max-height: 700px; /* Ajusta la altura de la imagen */
+    object-fit: cover; /* Mantiene las proporciones de la imagen */
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    z-index: 10; /* Hace que las flechas estén por encima de las imágenes */
+}
+
+.prev {
+    left: 0;
+    visibility: visible; /* Asegura que la flecha siempre sea visible */
+}
+
+.next {
+    right: 0;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFD700;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+
+.prev {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+img.logo1 {
+    width: 130px;
+}
+
+
+.tex2 {
+    margin-top: 5%;
+    background-color: #05000e7a;
+    color: #FFD700;
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    border-bottom: 1px solid #FFD700;
+}
+
+.provi {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    gap: 20px; 
+    justify-items: center; 
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+.provi div:nth-child(4), .provi div:nth-child(5) {
+    grid-column: span 1 / span 3;
+    justify-self: center;
+}
+
+.prov-item {
+    text-align: center;
+}
+
+img.provincias {
+    width: 200px;
+    height: auto;
+    border-radius: 10px; 
+    border: 2px solid #FFD700; 
+}
+
+img.provincias2 {
+    width: 200px;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #FFD700;
+    
+}
+
+.prov-text {
+    margin-top: 0px;
+    color: #FFD700;
+    font-size: 18px;
+}
+
+.prov-text {
+    margin-top: 0px;
+    color: #FFD700;
+    font-size: 18px;
+}
+
+
+@media (max-width: 768px) {
+    .provi {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .provi div:nth-child(4), .provi div:nth-child(5) {
+        grid-column: span 1 / span 2; 
+        justify-self: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .provi {
+        grid-template-columns: 1fr; 
+    }
+
+    .provi div:nth-child(4), .provi div:nth-child(5) {
+        grid-column: span 1 / span 1; 
+        justify-self: center;
+    }
+}
+
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.carousel {
+    margin-top: 100px;
+    display: flex;
+    overflow: hidden;
+    width: 450px;
+}
+
+.carousel-item {
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+    margin: 0 10px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+
+
+.left-arrow {
+    position: absolute;
+    left: -50px;
+}
+
+.right-arrow {
+    position: absolute;
+    right: -50px;
+}
+
+.tex3{
+    margin-top: 5%;
+    color: #FFD700;
+    display: flex;
+}
+
+.tex3 {
+    padding-top: 2%;
+    text-align: center;
+    font-size: 1.2rem; /* Opcional: ajusta el tamaño de la fuente */
+    margin: 0 auto; /* Para centrar en un contenedor con ancho limitado */
+    max-width: 800px; /* Opcional: limita el ancho del texto si es necesario */
+}
+
+footer {
+    margin-top: 5%;
+    background-color: #0b0b17;
+    padding: 20px;
+    text-align: left;
+    color: #f6c601;
+    border-top: 1px solid #FFD700;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin-right: 15px;
+    color: #f6c601;
+}
+.social-icons a:hover {
+    color: #ffffff; /* Color al pasar el cursor */
+}
+.social-icons {
+    margin-bottom: 15px;
+}
+.contact-info p {
+    margin: 5px 0;
+}
+
+.logo2{
+    margin-top: 3%;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    margin-left: 46%;
+}
+
+.logoredes {
+    width: 35px;
+    
+}
+
+.footer1 {
+    display: ruby-text;
+
+
+} 
+    
+    .contact-info {
+        margin-left: 700px;
+    }
+    
+
+
+    .wsp-button {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        width: 50px; 
+        height: 60px;
+        z-index: 100; 
+        cursor: pointer;
+    }
+    
+    .wsp-button img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .marca {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Define las columnas */
+        gap: 10px; /* Espacio entre los elementos */
+        justify-items: center;
+        margin-top: 2%;
+        
+    }
+    
+    .marca-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        
+    }
+    
+    .marca-item img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        border: 2px solid #FFD700;
+        border-radius: 10px;
+        background-color: white;
+    }
+    
+    .marca-text {
+        margin-top: 10px;
+        color: #FFD700;
+        font-size: 18px;
+    }
+
+    .product-carousel-container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        overflow: hidden;
+    }
+    
+    .product-slides-wrapper {
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .product-slides {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+        width: 100%; /* Ancho dinámico para el total de productos */
+    }
+    
+    .product-slide {
+        flex: 0 0 25%; /* Cada producto ocupa el 25% del contenedor para mostrar 4 productos */
+        text-align: center;
+        padding: 0.5rem; /* Espacio adicional entre las imágenes */
+    }
+    
+    .product-slide img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 2px solid #FFD700;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        background-color: white;
+    }
+    
+    .product-slide p {
+        color: #FFD700;
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    
+    .prev-product, .next-product {
+        position: absolute;
+        top: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #FFD700;
+        border: none;
+        padding: 15px;
+        cursor: pointer;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+    
+    .prev-product {
+        left: 0;
+    }
+    
+    .next-product {
+        right: 0;
+    }
+    
+
+    @media (max-width: 450px) {
+        .navbar ul li a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 22px;
+            margin: 0px 0rem;
+        }
+        .contact-info {
+            margin-left: 10px;
+        }
+
+        .logo2 {
+            margin-top: 3%;
+            width: 100px;
+            display: flex;
+            justify-content: center;
+            margin-left: 39%;
+        }
+    
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            gap: 2rem;
+        }
+    
+        .wsp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 5px;
+            width: 50px;
+            height: 60px;
+            z-index: 100;
+            cursor: pointer;
+        }
+    
+        .marca {
+            display: inline-block;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            justify-items: center;
+            margin-top: 2%;
+            margin-left: 38px;
+        }
+        footer {
+            margin-top: 5%;
+            background-color: #0b0b17;
+            padding: 20px;
+            text-align: left;
+            color: #f6c601;
+            border-top: 1px solid #FFD700;
+            display: flex;
+        }
+    
+        .product-carousel-container {
+            position: relative;
+            width: 100%;
+            max-width: 1500px;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+    
+        .product-slide img {
+            width: 187px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #FFD700;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            background-color: white;
+        }
+        .product-slides-wrapper {
+            width: 100%;
+            overflow: hidden;
+        }
+    
+        .product-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%; /* Ancho dinámico para el total de productos */
+        }
+        
+        .product-slide {
+            flex: 0 0 50%; /* Cambiar a 50% para mostrar 2 productos por fila */
+            text-align: center;
+            padding: 0.5rem; /* Espacio adicional entre las imágenes */
+        }
+    
+        .product-slide p {
+            color: #FFD700;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+        
+        .prev-product, .next-product {
+            position: absolute;
+            top: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: #FFD700;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        
+        .prev-product {
+            left: 0;
+        }
+        
+        .next-product {
+            right: 0;
+        }
+    }
+    
+    
+    }
