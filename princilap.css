@@ -319,6 +319,7 @@ footer {
         height: 60px;
         z-index: 100; 
         cursor: pointer;
+        
     }
     
     .wsp-button img {
@@ -616,4 +617,10 @@ footer {
     }
     
 
-
+    img.adm {
+        width: 10px;
+        position: fixed; /* O puede ser absolute si no quieres que se mantenga al hacer scroll */
+        bottom: 10px; /* Distancia desde el borde inferior */
+        right: 10px; /* Distancia desde el borde derecho */
+        z-index: 1000; /* Asegúrate de que el botón esté encima de otros elementos si es necesario */
+    }

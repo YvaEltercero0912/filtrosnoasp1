@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Filtros NOA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #140038f6;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #FFD700;
+            padding-bottom: 20px;
+        }
+
+        .navbar .logo {
+            color: #FFD700;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            gap: 4rem;
+            margin-left: 34px;
+        }
+
+        .navbar ul li a {
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 22px;
+            margin: 0 2rem;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <div class="portada">
+            <div class="titulo">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img class="logo1" src="img/logoamarillo.png" alt="onclick">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <h2>Agregar producto</h2>
+            <form id="formProducto">
+                <label for="codigo">Código:</label>
+                <input type="text" id="codigo" name="codigo" required><br>
+                
+                <label for="descripcion">Descripción:</label>
+                <input type="text" id="descripcion" name="descripcion" required><br>
+                
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" name="marca" required><br>
+                
+                <label for="precio">Precio de lista:</label>
+                <input type="number" id="precio" name="precio" required><br>
+
+                <label for="imagen">Imagen (opcional):</label>
+                <input type="file" id="imagen" name="imagen" accept="image/*"><br>
+                
+                <button type="submit">Agregar producto</button>
+            </form>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Descripción</th>
+                        <th>Marca</th>
+                        <th>Precio</th>
+                        <th>Imagen</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaProductos">
+                    <!-- Aquí se llenará con los productos agregados -->
+                </tbody>
+            </table>
+        </main>
+
+        <script>
+            document.getElementById('formProducto').addEventListener('submit', agregarProducto);
+
+function agregarProducto(e) {
+    e.preventDefault();
+
+    const imagenInput = document.getElementById('imagen');
+    const reader = new FileReader();
+
+    reader.onload = function() {
+        const producto = {
+            codigo: document.getElementById('codigo').value,
+            descripcion: document.getElementById('descripcion').value,
+            marca: document.getElementById('marca').value,
+            precio: document.getElementById('precio').value,
+            imagen: reader.result || ""
+        };
+
+        fetch('http://localhost:3000/productos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(producto)
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+            mostrarProductos();
+        })
+        .catch(error => console.error('Error:', error));
+    };
+
+    if (imagenInput.files.length > 0) {
+        reader.readAsDataURL(imagenInput.files[0]);
+    } else {
+        const producto = {
+            codigo: document.getElementById('codigo').value,
+            descripcion: document.getElementById('descripcion').value,
+            marca: document.getElementById('marca').value,
+            precio: document.getElementById('precio').value,
+            imagen: ""
+        };
+
+        fetch('http://localhost:3000/productos', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(producto)
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+            mostrarProductos();
+        })
+        .catch(error => console.error('Error:', error));
+    }
+}
+
+function mostrarProductos() {
+    fetch('http://localhost:3000/productos')
+    .then(response => response.json())
+    .then(data => {
+        const tablaProductos = document.getElementById('tablaProductos');
+        tablaProductos.innerHTML = '';
+
+        data.forEach(producto => {
+            tablaProductos.innerHTML += `
+                <tr>
+                    <td>${producto.codigo}</td>
+                    <td>${producto.descripcion}</td>
+                    <td>${producto.marca}</td>
+                    <td>${producto.precio}</td>
+                    <td>${producto.imagen ? `<img src="${producto.imagen}" width="100">` : 'Sin imagen'}</td>
+                    <td>
+                        <button onclick="editarProducto(${producto.id})">✏️</button>
+                        <button onclick="borrarProducto(${producto.id})">🗑️</button>
+                    </td>
+                </tr>
+            `;
+        });
+    });
+}
+
+// Función para borrar un producto
+function borrarProducto(id) {
+    if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+        fetch(`http://localhost:3000/productos/${id}`, {
+            method: 'DELETE'
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+            mostrarProductos();
+        })
+        .catch(error => console.error('Error al eliminar el producto:', error));
+    }
+}
+
+// Función para editar un producto
+function editarProducto(id) {
+    fetch(`http://localhost:3000/productos/${id}`)
+    .then(response => response.json())
+    .then(producto => {
+        document.getElementById('codigo').value = producto.codigo;
+        document.getElementById('descripcion').value = producto.descripcion;
+        document.getElementById('marca').value = producto.marca;
+        document.getElementById('precio').value = producto.precio;
+
+        document.getElementById('formProducto').onsubmit = function(e) {
+            e.preventDefault();
+            actualizarProducto(id);
+        };
+    });
+}
+
+// Función para actualizar un producto
+function actualizarProducto(id) {
+    const producto = {
+        codigo: document.getElementById('codigo').value,
+        descripcion: document.getElementById('descripcion').value,
+        marca: document.getElementById('marca').value,
+        precio: document.getElementById('precio').value,
+        imagen: "" // Aquí puedes gestionar la imagen si es necesario
+    };
+
+    fetch(`http://localhost:3000/productos/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(producto)
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data);
+        mostrarProductos();
+        document.getElementById('formProducto').onsubmit = agregarProducto;
+    })
+    .catch(error => console.error('Error al actualizar el producto:', error));
+}
+
+// Mostrar productos al cargar la página
+window.onload = mostrarProductos;
+
+        </script>
+    </div>
+</body>
+</html>

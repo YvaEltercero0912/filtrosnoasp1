@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Producto - Filtros NOA</title>
+    <link rel="stylesheet" href="usuario.css">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="portada">
+            <div class="titulo">
+                <div class="navbar">
+                    <div class="logo">
+                        <a href="index.html">
+                        <img class="logo1" src="img/logoamarillo.png" alt="onclick">
+                    </a>
+                    </div>
+                    
+                    <nav>
+                        <ul class="titulo1">
+                            <li><a class="tx1" href="#">Inicio</a></li>
+                            <li><a class="tx1" href="usuario.html">Catálogo</a></li>
+                            <li><a class="tx1" href="#">Nosotros</a></li>
+                            <li><a class="tx1" href="#">Contacto</a></li>
+                        </ul>
+                        
+                        
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    <main>
+        <h2>Buscar producto</h2>
+        <form id="formBusqueda">
+            <input type="text" id="buscarProducto" placeholder="Buscar por producto, marca, modelo o año">
+            <button type="submit">Buscar</button>
+        </form>
+
+        <div id="resultadoBusqueda" class="productos-container">
+            <!-- Aquí se mostrarán los resultados de la búsqueda -->
+        </div>
+    </main>
+
+
+
+    <footer>
+        <div class="footer1">
+            <div class="social-icons">
+                <a href="https://www.facebook.com/filtrosnoa/">
+                <img class="logoredes" src="img/pngwing.com (2).png" alt="onclick">
+                </a>
+                <a href="https://www.instagram.com/filtros_noa_distribuidora/">
+                <img class="logoredes" src="img/Instagram-Logo-PNG.png" alt="">
+                </a>
+                <a href="https://wa.me/3815568372">
+                <img class="logoredes" src="img/pngegg (1).png" alt="">
+                </a>
+            </div>
+            <div class="contact-info">
+                <p>Dirección: Avenida Juan B. Justo 1499, San Miguel de Tucuman, Tucuman</p>
+                <p>Contacto: 381-5568372</p>
+                <p>Horarios: Lunes a Viernes 9:00 a 18:00 hs
+                    <br>
+                y Sabados 08:45 a 13:00 hs
+                </p>
+                <p>Correo: filtrosnoa@gmail.com</p>
+
+                
+            </div>
+
+        </div>
+        
+
+    </footer>
+
+
+    <script>
+        document.getElementById('formBusqueda').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const busqueda = document.getElementById('buscarProducto').value.trim();
+
+            if (busqueda === '') {
+                alert('Por favor ingresa un término de búsqueda.');
+                return; // Si la búsqueda está vacía, no hacemos la solicitud
+            }
+
+            // Realizar la búsqueda de productos desde el servidor
+            fetch(`http://localhost:3000/productos?busqueda=${encodeURIComponent(busqueda)}`)
+                .then(response => response.json())
+                .then(resultados => {
+                    mostrarResultados(resultados);
+                })
+                .catch(error => console.error('Error al buscar productos:', error));
+        });
+
+        function mostrarResultados(resultados) {
+            const resultadoBusqueda = document.getElementById('resultadoBusqueda');
+            resultadoBusqueda.innerHTML = '';
+
+            if (resultados.length === 0) {
+                resultadoBusqueda.innerHTML = '<p>No se encontraron productos</p>';
+            } else {
+                resultados.forEach(producto => {
+                    resultadoBusqueda.innerHTML += `
+                        <div class="producto-card">
+                            ${producto.imagen ? `<img src="${producto.imagen}" alt="Imagen del producto">` : '<img src="https://via.placeholder.com/250x180?text=Sin+imagen" alt="Sin imagen">' }
+                            <div class="producto-info">
+                                <h3>${producto.descripcion}</h3>
+                                <p>Marca: ${producto.marca}</p>
+                                <div class="producto-precio">$${producto.precio}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        
+
+
+
+    </script>
+</body>
+</html>

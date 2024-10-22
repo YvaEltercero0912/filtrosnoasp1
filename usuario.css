@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #140038f6;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #FFD700;
+    padding-bottom: 20px;
+
+}
+
+.navbar .logo {
+    color: #FFD700;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.navbar ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    gap: 4rem;
+    margin-left: 34px;
+}
+
+
+.navbar ul li a {
+    color: #FFD700;
+    text-decoration: none;
+    font-size: 22px;
+    margin: 0 2rem;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    width: 50%;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #ff6f00;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff9f1c;
+}
+
+/* Estilo tipo Mercado Libre */
+.productos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.producto-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.producto-card:hover {
+    transform: scale(1.05);
+}
+
+.producto-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+}
+
+.producto-info {
+    padding: 10px;
+}
+
+.producto-info h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #333;
+}
+
+.producto-info p {
+    font-size: 16px;
+    color: #888;
+    margin: 5px 0;
+}
+
+.producto-precio {
+    font-size: 20px;
+    color: #ff6f00;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+footer {
+    margin-top: 30%;
+    background-color: #0b0b17;
+    padding: 20px;
+    text-align: left;
+    color: #f6c601;
+    border-top: 1px solid #FFD700;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin-right: 15px;
+    color: #f6c601;
+}
+.social-icons a:hover {
+    color: #ffffff; /* Color al pasar el cursor */
+}
+.social-icons {
+    margin-bottom: 15px;
+}
+.contact-info p {
+    margin: 5px 0;
+}
+
+.logo2{
+    margin-top: 3%;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    margin-left: 46%;
+}
+
+.logoredes {
+    width: 35px;
+    
+}
+
+.footer1 {
+    display: ruby-text;
+
+
+} 
+
+.contact-info {
+    margin-left: 700px;
+}
